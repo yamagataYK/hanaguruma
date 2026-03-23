@@ -2,11 +2,17 @@
 import { useState } from "react";
 import "./page.css";
 
+
+type Item = {
+    name: string;
+    price: number;
+};
+
 export default function Page() {
     const [total, setTotal] = useState(0);
-    const [selected, setSelected] = useState([]);
+    const [selected, setSelected] = useState<string[]>([]);
 
-    const addPrice = (item) => {
+    const addPrice = (item: Item) => {
         setTotal((prev) => prev + item.price);
         setSelected((prev) => [...prev, item.name]);
     };
@@ -72,7 +78,7 @@ export default function Page() {
         { name: "つまき", price: 600 },
     ];
 
-    const getColor = (price) => {
+    const getColor = (price: number) => {
         if (price === 100) return "#f3e58a";
         if (price === 150) return "#f5a3a3";
         if (price === 200) return "#a8d5ba";
